@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Mon Jul 27 18:22:56 2015
+Quartus II 64-Bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version
+Revision Name : GeniusVGA
+Top-level Entity Name : GeniusVGA
+Family : Cyclone IV E
+Total logic elements : 579
+    Total combinational functions : 577
+    Dedicated logic registers : 33
+Total registers : 33
+Total pins : 34
+Total virtual pins : 0
+Total memory bits : 2,097,152
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 1

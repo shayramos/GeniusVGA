@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<LOG_ROOT>
+	<PROJECT NAME="GeniusVGA">
+		<CBX_INST_ENTRY INSTANCE_NAME="|GeniusVGA|Memo:inst3|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_oe91.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|GeniusVGA|pll:inst2|altpll:altpll_component" CBX_FILE_NAME="pll_altpll.v"/>
+	</PROJECT>
+</LOG_ROOT>

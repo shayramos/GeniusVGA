@@ -1,0 +1,87 @@
+module interface_vga(clk, cor, vsync, hsync, blank)
+
+input clk
+output reg vsync, hsync, blank;
+output reg [7:0] cor;
+
+reg l, contclk;
+
+reg [3:0]estado_atual, estado_futuro;
+
+parameter
+
+inicio = 0,
+visivel = 1,
+frontph = 2,
+invisivel = 3,
+backph = 4,
+cont_linha = 5, 
+frontpv = 6,
+backpv = 7,
+voltav1 = 8,
+voltav2 = 9;
+
+
+always@(contclk, l)
+begin
+	case(estado_atual)
+	
+	inicio:
+	
+	visivel:
+	
+	frontph:
+	
+	invisivel:
+	
+	backph:
+	
+	cont_linha:
+	
+	frontpv:
+	
+	backpv:
+	
+	voltav1:
+	
+	voltav2:
+	
+	
+	
+	
+	
+end	
+
+always@(posedge clk)
+begin
+
+	contclk <= contclk + 1;
+	estado_atual <= estado_futuro;
+
+end
+
+always@(estado_atual)
+begin
+	case(estado_atual)
+	
+	inicio:
+	
+	visivel:
+	
+	frontph:
+	
+	invisivel:
+	
+	backph:
+	
+	cont_linha:
+	
+	frontpv:
+	
+	backpv:
+	
+	voltav1:
+	
+	voltav2:
+
+end

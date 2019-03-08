@@ -1,0 +1,103 @@
+//http://ca.olin.edu/2005/fpga_sprites/code/v2/hardware_sprite.v
+
+module sprite (reset,r,g,b,clk,linha,coluna,color);
+
+input [9:0] linha;
+input [9:0] coluna;
+
+always@(posedge clk) begin
+	if (reset) 
+		begin
+			//inicializacao
+		end
+	else
+		begin
+			shapecounter = shapecounter + 1;
+			if(shapecounter == 0)
+				begin
+				end
+		end
+endmodule
+
+module memoriaSprite(reset,r,g,b,a,clk,x,y,shape);
+
+	input [3:0] x, y;
+	input [2:0] shape;
+	input clk, pclk, Reset;
+	output r, g, b, a;
+	
+	reg r, g, b, a;
+	reg [15:0] shapecol;
+	
+	
+	// Sprite Shape 1 (verde)
+	reg [15:0] shapered[15:0];
+	
+	// Sprite Shape 2 (amarelo)
+	reg [15:0] shape2mem[15:0];
+	
+	// Sprite Shape 3 (vermelho)
+	reg [15:0] shape3mem[15:0];
+	
+	// Sprite Shape 4 (azul)
+	reg [15:0] shape4mem[15:0];
+	
+	always @(posedge clk) begin
+		if (Reset) begin
+			// Inicializar Shape 1
+			shapered[0] =  16'b0000000000000000;
+			shapered[1] =  16'b0000000000001001;
+			shapered[2] =  16'b0000000010011001;
+			shapered[3] =  16'b0000100110011001;
+			shapered[4] =  16'b1001100110011111;
+			shapered[5] =  16'b1001100110011111;
+			shapered[6] =  16'b1001100110011111;
+			shapered[7] =  16'b1001100110011001;
+			shapered[8] =  16'b1001100110011001;
+			shapered[9] =  16'b1001100110011001;
+			shapered[10] = 16'b1001100110011001;
+			shapered[11] = 16'b1001100110011001;
+			shapered[12] = 16'b1001100110011001;
+			shapered[13] = 16'b1001100110010000;
+			shapered[14] = 16'b1001100100000000;
+			shapered[15] = 16'b1001000000000000;
+			// Inicializar shape 2
+			//shape2mem[0] =  16'b0000000000000000100110011001100110011001100110010000000000000000;
+			//shape2mem[1] =  16'b0000000000001001100110011001100110011001100110011001000000000000;
+			//shape2mem[2] =  16'b0000000010011001100110011001100110011001100110011001100100000000;
+			//shape2mem[3] =  16'b0000100110011001111111111001100110011001111111111001100110010000;
+			//shape2mem[4] =  16'b1001100110011111111111111111100110011111111111111111100110011001;
+			//shape2mem[5] =  16'b1001100110011111001111111111100110011111001111111111100110011001;
+			//shape2mem[6] =  16'b1001100110011111001111111111100110011111001111111111100110011001;
+			//shape2mem[7] =  16'b1001100110011001001111111001100110011001001111111001100110011001;
+			//shape2mem[8] =  16'b1001100110011001100110011001100110011001100110011001100110011001;
+			//shape2mem[9] =  16'b1001100110011001100110011001100110011001100110011001100110011001;
+			//shape2mem[10] = 16'b1001100110011001100110011001100110011001100110011001100110011001;
+			//shape2mem[11] = 16'b1001100110011001100110011001100110011001100110011001100110011001;
+			//shape2mem[12] = 16'b1001100110011001100110011001100110011001100110011001100110011001;
+			//shape2mem[13] = 16'b0000100110011001100110010000100110011001100110010000100110011001;
+			//shape2mem[14] = 16'b0000000010011001100100000000000010011001100100000000000010011001;
+			//shape2mem[15] = 16'b0000000000001001000000000000000000001001000000000000000000001001;
+			
+		end
+	end
+
+// Assign signals to proper outputs
+	always @(posedge pclk) begin
+		if (shape == 0)
+			shaperow = shapered[ycoord];
+		if (shape == 1)
+			shaperow = shape2mem[ycoord];
+		if (shape == 2)
+			shaperow = shape3mem[ycoord];
+		if (shape == 3)
+			shaperow = shape4mem[ycoord];
+		R = shaperow[(xcoord*4)+3];
+		G = shaperow[(xcoord*4)+2];
+		B = shaperow[(xcoord*4)+1];
+		A = shaperow[xcoord*4];
+	end
+	
+endmodule
+	
+	

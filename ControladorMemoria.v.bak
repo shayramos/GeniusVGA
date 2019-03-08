@@ -1,0 +1,8 @@
+module ControladorMemoria (clock, reset, address, read_enable, clock_to_memory, address_to_memory);
+
+input clock, reset, read_enable;
+input [15:0] address;
+output clock_to_memory;
+output [15:0] address_to_memory;
+
+endmodule 

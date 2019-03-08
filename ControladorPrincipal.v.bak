@@ -1,0 +1,8 @@
+module ControladorPrincipal (clock, reset, data_from_memory, address, read_enable, RGB, V_Sync, H_Sync, Blank);
+input clock, reset;
+input [47:0] data_from_memory;
+output [15:0] address;
+output read_enable, V_Sync, H_Sync, Blank;
+output [23:0] RGB;
+
+endmodule
